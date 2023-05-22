@@ -1,6 +1,31 @@
 # Weather APP notes
 
-## 2023-05-22
+## Project Requirements
+
+- [ ] toggle Fahrenheit or Celsius
+- [ ] change the look of the page bases on the data
+- [ ] use Promises or Async/Await in the code 
+- [ ] add a form that lets users input their location
+
+## 2023-05-22 I
 
 - I set up my repo using [the template I created a few weeks aga](https://github.com/ManonLef/webpack-eslint-prettier)
-- I will postpone the style loader until a bit later to not bloat the setup immediately and see how it works barebones.
+- I will postpone the style loader until a bit later to not bloat the setup immediately and see how it works.
+- added the build command to package.json. Might consider adding this to the template so you can use the `npm run build` command:
+```
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+},
+```
+- can do the same as above for `watch` with adding `"watch": "webpack --watch"`
+
+## 2023-05-22 II
+
+- I set up some basic functions to get the location based data for the current weather but now I need to start planning to:
+  - decide which data I'm actually going to display to store inside an object
+  - plan out modules and I think this will be similar to the to-do list (MVC) where model will deal with the API, view with UI and controller with user clicks and such
+
+## To-do's
+- [ ] 2023-05-22 look into free API options available for forecast
+- [ ] 2023-05-22 pseudocode/plan
