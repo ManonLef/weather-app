@@ -1,0 +1,6 @@
+# Weather APP notes
+
+## 2023-05-22
+
+- I set up my repo using [the template I created a few weeks aga](https://github.com/ManonLef/webpack-eslint-prettier)
+- I will postpone the style loader until a bit later to not bloat the setup immediately and see how it works barebones.
