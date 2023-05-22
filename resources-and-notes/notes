@@ -26,6 +26,34 @@
   - decide which data I'm actually going to display to store inside an object
   - plan out modules and I think this will be similar to the to-do list (MVC) where model will deal with the API, view with UI and controller with user clicks and such
 
+## 2023-05-22 III Planning ideas
+- Main Elements (checked available in API):
+  - Location data
+    - Location name
+    - Country
+  - Current Weather
+    - Current Condition (check different ones on their site)
+      - This is where I'll base the background on. Probably with a switch/case. 
+      - Conditions available: [found here](https://www.weatherapi.com/docs/weather_conditions.json) from [the docs](https://www.weatherapi.com/docs/#weather-icons)
+    - Temperature
+    - Wind direction
+    - Wind strength
+    - possible air quality
+  - Forecast
+    - Forecast for today (is available in current weather call as well)
+    - decide on amount of days (if possible to get >3 since I came across a discord post this was limited for the free API plan)
+    - 
+  - Location input
+  - Temperature Unit toggle
+
+### Notes:
+- the condition  features icons
+
+## Inspiration (things I thought of building or doing while working on this project)
+- Future App idea; create a METAR/TAF weather project for aviation
+
 ## To-do's
 - [ ] 2023-05-22 look into free API options available for forecast
 - [ ] 2023-05-22 pseudocode/plan
+- [ ] 2023-05-22 store all the info I actually want to use in one object
+- [ ] 2023-05-22 at the end of project please make sure to credit WeatherAPI.com [instructions](https://www.weatherapi.com/docs/#credit)
