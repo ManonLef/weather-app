@@ -46,6 +46,11 @@
   - Location input
   - Temperature Unit toggle
 
+## 2023-05-23 
+- Started with populating the object for current weather. 
+- Have to look up if there's a way to concatenate the temperature unit to extract API data. I might just be overlooking something obvious currently since it's evening and my day was full.
+- I added a function to display days of the week for the forecast. Came across some mentions of it not being very scalable in case of many conversions (memory leaks). I could add something like date-fns, but since I'm limiting my forecast to the coming week probable, I will leave this as is. 
+
 ### Notes:
 - the condition  features icons
 
@@ -57,3 +62,4 @@
 - [ ] 2023-05-22 pseudocode/plan
 - [ ] 2023-05-22 store all the info I actually want to use in one object
 - [ ] 2023-05-22 at the end of project please make sure to credit WeatherAPI.com [instructions](https://www.weatherapi.com/docs/#credit)
+- [ ] 2023-05-23 consider extracting temp function as helper
