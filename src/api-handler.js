@@ -28,6 +28,7 @@ async function getCurrentWeather(location) {
 
 async function getFutureWeather(location) {
   const data = await getWeatherData(location);
+  const forecastWeek = []
   const futureData = data.forecast.forecastday.forEach((futureDate) => {
     const forecastDay = {
       day: getWeekDay(createDate(futureDate.date)),
@@ -46,9 +47,9 @@ async function getFutureWeather(location) {
         return `${futureDate.day.mintemp_f}°F`;
       })(),
     };
-    console.log(forecastDay);
+    forecastWeek.push(forecastDay)
   });
-  console.log(futureData);
+  console.table(forecastWeek)
 }
 
 // date helpers
