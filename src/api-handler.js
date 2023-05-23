@@ -28,10 +28,15 @@ async function getCurrentWeather(location) {
 
 async function getFutureWeather(location) {
   const data = await getWeatherData(location);
-  const futureData = (data.forecast.forecastday).forEach(day => console.log(day));
-  console.log(futureData)
+  const futureData = data.forecast.forecastday.forEach((day) => {
+    const date = new Date(day.date).toLocaleString("en-us", {
+      weekday: "long",
+    });
+    console.log(date);
+  });
+  console.log(futureData);
 }
 
 getCurrentWeather("Amsterdam");
-getFutureWeather("Amsterdam")
+getFutureWeather("Amsterdam");
 console.log("hi");
