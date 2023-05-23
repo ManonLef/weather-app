@@ -26,5 +26,12 @@ async function getCurrentWeather(location) {
   return currentData;
 }
 
+async function getFutureWeather(location) {
+  const data = await getWeatherData(location);
+  const futureData = (data.forecast.forecastday).forEach(day => console.log(day));
+  console.log(futureData)
+}
+
 getCurrentWeather("Amsterdam");
+getFutureWeather("Amsterdam")
 console.log("hi");
