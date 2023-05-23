@@ -28,13 +28,51 @@ async function getCurrentWeather(location) {
 
 async function getFutureWeather(location) {
   const data = await getWeatherData(location);
-  const futureData = data.forecast.forecastday.forEach((day) => {
-    const date = new Date(day.date).toLocaleString("en-us", {
-      weekday: "long",
-    });
-    console.log(date);
+  const futureData = data.forecast.forecastday.forEach((futureDate) => {
+    const forecastDay = {
+      day: getWeekDay(createDate(futureDate.date)),
+      date: getLocalDate(futureDate.date),
+      weather: futureDate.day.condition.text,
+      maxtemp: (function temperature() {
+        if (tempUnit === "c") {
+          return `${futureDate.day.maxtemp_c}°C`;
+        }
+        return `${futureDate.day.maxtemp_f}°F`;
+      })(),
+      mintemp: (function temperature() {
+        if (tempUnit === "c") {
+          return `${futureDate.day.mintemp_c}°C`;
+        }
+        return `${futureDate.day.mintemp_f}°F`;
+      })(),
+    };
+    console.log(forecastDay);
   });
   console.log(futureData);
+}
+
+// date helpers
+function getWeekDay(date) {
+  const weekDay = date.toLocaleString("en-us", {
+    weekday: "long",
+  });
+  return weekDay;
+}
+
+function createDate(date) {
+  const formattedDate = new Date(date);
+  return formattedDate;
+}
+
+function getLocalDate(date) {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const localDate = createDate(date).toLocaleDateString(undefined, options);
+  return localDate;
 }
 
 getCurrentWeather("Amsterdam");
