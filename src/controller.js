@@ -1,18 +1,22 @@
-import { inputLocation, submitLocation, clearInput, toggle } from "./view";
-import { getAllWeather, setTempUnit } from "./api-handler";
+import { inputLocation, submitLocation, clearInput, toggle, renderCurrent } from "./view";
+import { getAllWeather, setTempUnit, setLocation } from "./api-handler";
 
 document.addEventListener("DOMContentLoaded", () => {
-  submitLocation.addEventListener("click", (event) => {
-    event.preventDefault();
-    const location = inputLocation.value;
-    getAllWeather(location);
-    clearInput();
-  });
+  submitLocation.addEventListener("click", renderLocationWeather);
   toggle.addEventListener("change", () => {
     if (toggle.checked) {
-      return setTempUnit("f")
+      setTempUnit("f");
+      return renderCurrent(getAllWeather())
     }
-    return setTempUnit("c")
+     setTempUnit("c")
+     return renderCurrent(getAllWeather())
   });
 });
+
+async function renderLocationWeather(event) {
+  event.preventDefault();
+  setLocation(inputLocation.value);
+  await renderCurrent(getAllWeather())
+  clearInput();
+}
 
