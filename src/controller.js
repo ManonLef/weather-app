@@ -1,4 +1,4 @@
-import { inputLocation, submitLocation, clearInput, toggle, renderCurrent } from "./view";
+import { inputLocation, submitLocation, clearInput, toggle, renderCurrent, renderFuture } from "./view";
 import { getAllWeather, setTempUnit, setLocation } from "./api-handler";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,6 +23,7 @@ function toggleTemp() {
 }
 
 renderCurrent(getAllWeather())
+renderFuture(getAllWeather())
 
 
 
