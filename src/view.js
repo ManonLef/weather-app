@@ -28,6 +28,10 @@ async function renderCurrent(wx) {
   const current = locationWeather[0]
   //
   clearCurrent()
+  // img 
+  const icon = new Image()
+  icon.src = `${current.icon}`
+  // 
   const location = document.createElement("div")
   location.textContent = `${current.location}, ${current.country}`
   const day = document.createElement("div")
@@ -40,7 +44,7 @@ async function renderCurrent(wx) {
   temp.textContent = `${current.temperature}`
 
 
-  const elementsToRender = [location, day, date, weather, temp]
+  const elementsToRender = [icon, location, day, date, weather, temp]
   elementsToRender.forEach(element => currentWeather.append(element))
 }
 
