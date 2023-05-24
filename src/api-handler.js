@@ -90,7 +90,6 @@ async function getAllWeather() {
   // console helpers
     console.table(weather[0])
     console.table(weather[1])
-    weather[1].forEach(day => console.table(day))
   return weather;
 }
 
