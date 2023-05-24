@@ -1,21 +1,27 @@
 let tempUnit = "c";
+let location = "amsterdam"
+
+function setLocation(loc) {
+  return location = loc
+}
 
 function setTempUnit(unit) {
-  tempUnit = unit
+  return tempUnit = unit
 }
 
 async function getWeatherData(location) {
   const locationLink = `https://api.weatherapi.com/v1/forecast.json?key=51ca3ed754014c58aad194423231805&q=${location}&days=7&aqi=no&alerts=no`;
   const response = await fetch(locationLink, { mode: "cors" });
   const weatherData = await response.json();
-  console.log(weatherData);
   return weatherData;
 }
 
 async function getCurrentWeather(location) {
   const data = await getWeatherData(location);
   const currentData = {
-    date: data.current.last_updated,
+    last_update: data.current.last_updated,
+    day: getWeekDay(createDate(data.current.last_updated)),
+    date: getLocalDate(data.current.last_updated),
     location: data.location.name,
     country: data.location.country,
     weather: data.current.condition.text,
@@ -26,7 +32,6 @@ async function getCurrentWeather(location) {
       return `${data.current.temp_f}°F`;
     })(),
   };
-  console.log(currentData);
   return currentData;
 }
 
@@ -53,7 +58,7 @@ async function getFutureWeather(location) {
     };
     forecastWeek.push(forecastDay);
   });
-  console.table(forecastWeek);
+  return forecastWeek
 }
 
 // date helpers
@@ -79,13 +84,16 @@ function getLocalDate(date) {
   return localDate;
 }
 
-getCurrentWeather("Amsterdam");
-getFutureWeather("Amsterdam");
-console.log("hi");
-
-async function getAllWeather(location) {
-  const weather = [getCurrentWeather(location), getFutureWeather(location)];
+// combined functions to get all weather to be displayed
+async function getAllWeather() {
+  const weather = [await getCurrentWeather(location), await getFutureWeather(location)];
+  // console helpers
+    console.table(weather[0])
+    console.table(weather[1])
+    weather[1].forEach(day => console.table(day))
   return weather;
 }
 
-export { getAllWeather, setTempUnit };
+getAllWeather("ams")
+
+export { getAllWeather, setTempUnit, setLocation };
