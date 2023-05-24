@@ -3,14 +3,7 @@ import { getAllWeather, setTempUnit, setLocation } from "./api-handler";
 
 document.addEventListener("DOMContentLoaded", () => {
   submitLocation.addEventListener("click", renderLocationWeather);
-  toggle.addEventListener("change", () => {
-    if (toggle.checked) {
-      setTempUnit("f");
-      return renderCurrent(getAllWeather())
-    }
-     setTempUnit("c")
-     return renderCurrent(getAllWeather())
-  });
+  toggle.addEventListener("change", toggleTemp);
 });
 
 async function renderLocationWeather(event) {
@@ -19,4 +12,20 @@ async function renderLocationWeather(event) {
   await renderCurrent(getAllWeather())
   clearInput();
 }
+
+function toggleTemp() {
+  if (toggle.checked) {
+    setTempUnit("f");
+    return renderCurrent(getAllWeather())
+  }
+   setTempUnit("c")
+   return renderCurrent(getAllWeather())
+}
+
+renderCurrent(getAllWeather())
+
+
+
+
+
 
