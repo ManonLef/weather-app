@@ -28,8 +28,8 @@ async function getCurrentWeather(location) {
 
 async function getFutureWeather(location) {
   const data = await getWeatherData(location);
-  const forecastWeek = []
-  const futureData = data.forecast.forecastday.forEach((futureDate) => {
+  const forecastWeek = [];
+  data.forecast.forecastday.forEach((futureDate) => {
     const forecastDay = {
       day: getWeekDay(createDate(futureDate.date)),
       date: getLocalDate(futureDate.date),
@@ -47,9 +47,9 @@ async function getFutureWeather(location) {
         return `${futureDate.day.mintemp_f}°F`;
       })(),
     };
-    forecastWeek.push(forecastDay)
+    forecastWeek.push(forecastDay);
   });
-  console.table(forecastWeek)
+  console.table(forecastWeek);
 }
 
 // date helpers
@@ -78,3 +78,10 @@ function getLocalDate(date) {
 getCurrentWeather("Amsterdam");
 getFutureWeather("Amsterdam");
 console.log("hi");
+
+async function getAllWeather(location) {
+  const weather = [getCurrentWeather(location), getFutureWeather(location)];
+  return weather;
+}
+
+export { getAllWeather };
