@@ -13,4 +13,9 @@ async function clearInput() {
   inputLocation.value = ""
 }
 
-export {inputLocation, submitLocation, clearInput}
+// temp toggle
+const toggle = document.createElement("input")
+toggle.type = "checkbox"
+body.append(toggle)
+
+export {inputLocation, submitLocation, clearInput, toggle}

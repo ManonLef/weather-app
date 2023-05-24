@@ -1,5 +1,9 @@
 let tempUnit = "c";
 
+function setTempUnit(unit) {
+  tempUnit = unit
+}
+
 async function getWeatherData(location) {
   const locationLink = `https://api.weatherapi.com/v1/forecast.json?key=51ca3ed754014c58aad194423231805&q=${location}&days=7&aqi=no&alerts=no`;
   const response = await fetch(locationLink, { mode: "cors" });
@@ -84,4 +88,4 @@ async function getAllWeather(location) {
   return weather;
 }
 
-export { getAllWeather };
+export { getAllWeather, setTempUnit };
