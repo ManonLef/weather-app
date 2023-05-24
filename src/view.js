@@ -25,23 +25,29 @@ body.append(currentWeather)
 async function renderCurrent(wx) {
   // this data still has to go to the api-handler
   const locationWeather = await wx
-  const currentWeather = locationWeather[0]
-  console.log(currentWeather)
+  const current = locationWeather[0]
   //
+  clearCurrent()
   const location = document.createElement("div")
-  location.textContent = `${currentWeather.location}, ${currentWeather.country}`
+  location.textContent = `${current.location}, ${current.country}`
   const day = document.createElement("div")
-  day.textContent = `${currentWeather.day}`
+  day.textContent = `${current.day}`
   const date = document.createElement("div")
-  date.textContent = `${currentWeather.date}`
+  date.textContent = `${current.date}`
   const weather = document.createElement("div")
-  weather.textContent = `${currentWeather.weather}`
+  weather.textContent = `${current.weather}`
   const temp = document.createElement("div")
-  temp.textContent = `${currentWeather.temperature}`
+  temp.textContent = `${current.temperature}`
 
 
   const elementsToRender = [location, day, date, weather, temp]
-  elementsToRender.forEach(element => body.append(element))
+  elementsToRender.forEach(element => currentWeather.append(element))
+}
+
+function clearCurrent() {
+  while (currentWeather.firstChild) {
+    currentWeather.removeChild(currentWeather.firstChild)
+  }
 }
 
 export { inputLocation, submitLocation, clearInput, toggle, renderCurrent };
