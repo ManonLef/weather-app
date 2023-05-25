@@ -5,6 +5,9 @@ const appContainer = document.querySelector(".app-container");
 appContainer.style.display = "grid";
 appContainer.style.gap = "5px";
 
+// app Header:
+const appHeader = document.querySelector("header")
+
 // current weather display
 const currentWeather = document.createElement("div");
 const currentWeatherHeader = document.createElement("div");
@@ -16,6 +19,8 @@ async function renderCurrent(wx) {
   const current = locationWeather[0];
   //
   clearCurrent();
+  // app header
+  appHeader.textContent = `The Weather for ${current.location}: It's currently ${current.weather}`
   // header
   const currentHeader = document.createElement("div");
   currentHeader.textContent = `Current Weather Conditions for ${current.location}`;
