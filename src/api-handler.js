@@ -1,24 +1,26 @@
+/* eslint no-use-before-define: ["error", { "functions": false }] */
 let tempUnit = "c";
-let location = "amsterdam"
+let location = "auto:ip";
 
 function setLocation(loc) {
-  return location = loc
+  location = loc;
+  return location;
 }
 
 function setTempUnit(unit) {
-  return tempUnit = unit
+  tempUnit = unit;
+  return tempUnit;
 }
 
-async function getWeatherData(location) {
-  const locationLink = `https://api.weatherapi.com/v1/forecast.json?key=51ca3ed754014c58aad194423231805&q=${location}&days=7&aqi=no&alerts=no`;
-  const response = await fetch(locationLink, { mode: "cors" });
-  const weatherData = await response.json();
-  console.log(weatherData)
-  return weatherData;
+async function getWeatherData(loc) {
+    const locationLink = `https://api.weatherapi.com/v1/forecast.json?key=51ca3ed754014c58aad194423231805&q=${loc}&days=7&aqi=no&alerts=no`;
+    const response = await fetch(locationLink, { mode: "cors" });
+    const weatherData = await response.json();
+    return weatherData;
 }
 
-async function getCurrentWeather(location) {
-  const data = await getWeatherData(location);
+async function getCurrentWeather(loc) {
+  const data = await getWeatherData(loc);
   const currentData = {
     icon: data.current.condition.icon,
     last_update: data.current.last_updated,
@@ -37,11 +39,12 @@ async function getCurrentWeather(location) {
   return currentData;
 }
 
-async function getFutureWeather(location) {
-  const data = await getWeatherData(location);
+async function getFutureWeather(loc) {
+  const data = await getWeatherData(loc);
   const forecastWeek = [];
   data.forecast.forecastday.forEach((futureDate) => {
     const forecastDay = {
+      icon: futureDate.day.condition.icon,
       day: getWeekDay(createDate(futureDate.date)),
       date: getLocalDate(futureDate.date),
       weather: futureDate.day.condition.text,
@@ -60,7 +63,7 @@ async function getFutureWeather(location) {
     };
     forecastWeek.push(forecastDay);
   });
-  return forecastWeek
+  return forecastWeek;
 }
 
 // date helpers
@@ -88,13 +91,14 @@ function getLocalDate(date) {
 
 // combined functions to get all weather to be displayed
 async function getAllWeather() {
-  const weather = [await getCurrentWeather(location), await getFutureWeather(location)];
+  const weather = [
+    await getCurrentWeather(location),
+    await getFutureWeather(location),
+  ];
   // console helpers
-    console.table(weather[0])
-    console.table(weather[1])
+  console.table(weather[0]);
+  console.table(weather[1]);
   return weather;
 }
-
-getAllWeather("ams")
 
 export { getAllWeather, setTempUnit, setLocation };
