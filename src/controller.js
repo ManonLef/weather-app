@@ -1,3 +1,4 @@
+/* eslint no-use-before-define: ["error", { "functions": false }] */
 import { inputLocation, submitLocation, clearInput, toggle, renderCurrent, renderFuture } from "./view";
 import { getAllWeather, setTempUnit, setLocation } from "./api-handler";
 
@@ -9,22 +10,25 @@ document.addEventListener("DOMContentLoaded", () => {
 async function renderLocationWeather(event) {
   event.preventDefault();
   setLocation(inputLocation.value);
-  await renderCurrent(getAllWeather())
+  await renderAll();
   clearInput();
 }
 
 function toggleTemp() {
   if (toggle.checked) {
     setTempUnit("f");
-    return renderCurrent(getAllWeather())
+    return renderAll()
   }
    setTempUnit("c")
-   return renderCurrent(getAllWeather())
+   return renderAll()
 }
 
+function renderAll() {
 renderCurrent(getAllWeather())
 renderFuture(getAllWeather())
+}
 
+renderAll()
 
 
 
