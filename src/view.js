@@ -62,6 +62,7 @@ appContainer.append(toggle);
 // forecast weather display
 const forecastWeatherHeader = document.createElement("div");
 const forecastWeather = document.createElement("div");
+forecastWeather.className = "forecast-container"
 
 appContainer.append(forecastWeatherHeader, forecastWeather);
 

@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 3rem auto 3rem;
+}
+
+header {
+  background-color: pink;
+  padding: 1rem;
+}
+
+.app-container {
+  background-color: lightblue;
+  padding: 1rem;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer {
+  background-color: pink;
+  padding: 1rem;
+}
