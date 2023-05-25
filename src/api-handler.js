@@ -24,6 +24,7 @@ async function getCurrentWeather(loc) {
   const currentData = {
     icon: data.current.condition.icon,
     last_update: data.current.last_updated,
+    last_update_time: getLocalTime(createDate(data.current.last_updated)),
     day: getWeekDay(createDate(data.current.last_updated)),
     date: getLocalDate(data.current.last_updated),
     location: data.location.name,
@@ -44,6 +45,7 @@ async function getFutureWeather(loc) {
   const forecastWeek = [];
   data.forecast.forecastday.forEach((futureDate) => {
     const forecastDay = {
+      location: `${data.location.name}`,
       icon: futureDate.day.condition.icon,
       day: getWeekDay(createDate(futureDate.date)),
       date: getLocalDate(futureDate.date),
@@ -74,6 +76,13 @@ function getWeekDay(date) {
   return weekDay;
 }
 
+function getLocalTime(date) {
+  const time = date.toLocaleTimeString([], { 
+    hour: "2-digit", minute: "2-digit" 
+  });
+  return     time
+}
+
 function createDate(date) {
   const formattedDate = new Date(date);
   return formattedDate;
@@ -96,8 +105,6 @@ async function getAllWeather() {
     await getFutureWeather(location),
   ];
   // console helpers
-  console.table(weather[0]);
-  console.table(weather[1]);
   return weather;
 }
 
