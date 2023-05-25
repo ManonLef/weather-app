@@ -1,10 +1,6 @@
 /* eslint no-use-before-define: ["error", { "functions": false }] */
 const appContainer = document.querySelector(".app-container");
 
-// test styling before css
-appContainer.style.display = "grid";
-appContainer.style.gap = "5px";
-
 // app Header:
 const appHeader = document.querySelector("header")
 
@@ -66,10 +62,6 @@ appContainer.append(toggle);
 // forecast weather display
 const forecastWeatherHeader = document.createElement("div");
 const forecastWeather = document.createElement("div");
-// style before stylesheet added. Testing purposes only
-forecastWeather.style.display = "flex";
-forecastWeather.style.gap = "20px";
-//
 
 appContainer.append(forecastWeatherHeader, forecastWeather);
 
