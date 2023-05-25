@@ -5,7 +5,7 @@
 - [ ] toggle Fahrenheit or Celsius
 - [ ] change the look of the page bases on the data
 - [ ] use Promises or Async/Await in the code 
-- [ ] add a form that lets users input their location
+- [x] add a form that lets users input their location
 
 ## 2023-05-22 I
 
@@ -51,6 +51,17 @@
 - Have to look up if there's a way to concatenate the temperature unit to extract API data. I might just be overlooking something obvious currently since it's evening and my day was full.
 - I added a function to display days of the week for the forecast. Came across some mentions of it not being very scalable in case of many conversions (memory leaks). I could add something like date-fns, but since I'm limiting my forecast to the coming week probable, I will leave this as is. 
 
+## 2023-05-24
+- smooth sailing so far
+- added a basic form to enter location, weather outputs to the console nicely
+- added a temperature toggle to toggle between F and C temp units
+- both form and "toggle" (which is still a checkbox) are very basic still but they work
+
+## 2023-05-25
+- Added enough data for now and imported the basic icons from WeatherAPI itself. I don't feel spending much time on linking all the weather conditions to a custom background adds anything to my learning so these icons will suffice for now
+- Spent a while troubleshooting why every single forecast was seven days of sun. I only rendered the forecast during loading but not after entering a new location (facepalm)
+- I considered adding a function to start the website with a search result for user location. This didn't work well since even my own browser has location services off by system settings. It turned out the API has an ip option that does seem to work nicely.
+
 ### Notes:
 - the condition  features icons
 
@@ -58,8 +69,18 @@
 - Future App idea; create a METAR/TAF weather project for aviation
 
 ## To-do's
-- [ ] 2023-05-22 look into free API options available for forecast
-- [ ] 2023-05-22 pseudocode/plan
-- [ ] 2023-05-22 store all the info I actually want to use in one object
-- [ ] 2023-05-22 at the end of project please make sure to credit WeatherAPI.com [instructions](https://www.weatherapi.com/docs/#credit)
-- [ ] 2023-05-23 consider extracting temp function as helper
+- [x] 2023-05-22 look into free API options available for forecast
+- [x] 2023-05-22 pseudocode/plan
+- [x] 2023-05-22 store all the info I actually want to use in one object
+- [x] 2023-05-22 at the end of project please make sure to credit WeatherAPI.com [instructions](https://www.weatherapi.com/docs/#credit)
+- [x] 2023-05-23 consider extracting temp function as helper
+- [ ] 2023-05-24 add error handling
+  - [ ] location unknown
+
+## Future Additions
+- [ ] Hourly forecast for today
+- [ ] My own illustrated backgrounds to change the mood depending on weather
+- [ ] My own icons
+
+## Test with:
+- input `av`
