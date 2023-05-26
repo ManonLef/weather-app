@@ -2,9 +2,9 @@
 
 ## Project Requirements
 
-- [ ] toggle Fahrenheit or Celsius
-- [ ] change the look of the page bases on the data
-- [ ] use Promises or Async/Await in the code 
+- [x] toggle Fahrenheit or Celsius
+- [x] change the look of the page bases on the data
+- [x] use Promises or Async/Await in the code 
 - [x] add a form that lets users input their location
 
 ## 2023-05-22 I
@@ -90,4 +90,4 @@
 - [ ] More specific error handling
 
 ## Test with:
-- input `av`
+- location error: input `av`
