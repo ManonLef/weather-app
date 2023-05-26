@@ -23,9 +23,12 @@ function toggleTemp() {
    return renderAll()
 }
 
-function renderAll() {
-renderCurrent(getAllWeather())
-renderFuture(getAllWeather())
+async function renderAll() {
+try {await renderCurrent(getAllWeather())
+await renderFuture(getAllWeather())}
+catch(error) {
+  document.querySelector(".error").textContent = "location not found"
+}
 }
 
 renderAll()

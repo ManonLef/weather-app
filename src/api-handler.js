@@ -21,6 +21,7 @@ async function getWeatherData(loc) {
 
 async function getCurrentWeather(loc) {
   const data = await getWeatherData(loc);
+  console.log(data)
   const currentData = {
     icon: data.current.condition.icon,
     last_update: data.current.last_updated,

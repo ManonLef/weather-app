@@ -14,13 +14,13 @@ div.className = "div";
 switchLabel.append(toggle, div);
 appHeader.append(switchLabel);
 
-
 // current weather display
 const currentWeather = document.createElement("div");
-currentWeather.className = "current-container"
+currentWeather.className = "current-container";
 appContainer.append(currentWeather);
 
 async function renderCurrent(wx) {
+  errorDiv.textContent = ""
   // this data still has to go to the api-handler
   const locationWeather = await wx;
   const current = locationWeather[0];
@@ -28,44 +28,45 @@ async function renderCurrent(wx) {
   clearCurrent();
   // header
   const currentHeader = document.createElement("div");
-  currentHeader.className = "current-header"
+  currentHeader.className = "current-header";
   currentHeader.textContent = `Current Weather in ${current.location}, ${current.country}`;
   // img
   const icon = new Image();
   icon.src = `${current.icon}`;
   //
   const date = document.createElement("div");
-  date.className = "updated"
+  date.className = "updated";
   date.textContent = `Updated: ${current.day} ${current.date} ${current.last_update_time}`;
   const weather = document.createElement("div");
   weather.textContent = `${current.weather}`;
   const temp = document.createElement("div");
   temp.textContent = `${current.temperature}`;
 
-  const elementsToRender = [ icon,currentHeader, weather, temp, date];
+  const elementsToRender = [icon, currentHeader, weather, temp, date];
   elementsToRender.forEach((element) => currentWeather.append(element));
 }
 
 // create form
 
-const formContainer = document.createElement("div")
-formContainer.className = "form-container"
-appContainer.append(formContainer)
+const formContainer = document.createElement("div");
+formContainer.className = "form-container";
+appContainer.append(formContainer);
 
 const locationForm = document.createElement("form");
 formContainer.appendChild(locationForm);
 
-const inputContainer = document.createElement("div")
-inputContainer.className = "input-container"
+const inputContainer = document.createElement("div");
+inputContainer.className = "input-container";
 
-locationForm.append(inputContainer)
+locationForm.append(inputContainer);
 
 const inputLocation = document.createElement("input");
-inputContainer.appendChild(inputLocation)
-inputLocation.setAttribute("placeholder", "enter a location")
+inputContainer.appendChild(inputLocation);
+inputLocation.setAttribute("placeholder", "enter a location");
 
 const errorDiv = document.createElement("div");
-inputContainer.appendChild(errorDiv)
+errorDiv.className = "error"
+inputContainer.appendChild(errorDiv);
 
 const submitLocation = document.createElement("button");
 submitLocation.textContent = "submit";
@@ -75,15 +76,14 @@ function clearInput() {
   inputLocation.value = "";
 }
 
-
 // forecast weather display
-const forecastContainer = document.createElement("div")
-forecastContainer.className = "forecast-container"
+const forecastContainer = document.createElement("div");
+forecastContainer.className = "forecast-container";
 const forecastWeatherHeader = document.createElement("div");
-forecastWeatherHeader.className = "forecast-header"
+forecastWeatherHeader.className = "forecast-header";
 const forecastWeather = document.createElement("div");
 forecastWeather.className = "forecast-days";
-forecastContainer.append(forecastWeatherHeader, forecastWeather)
+forecastContainer.append(forecastWeatherHeader, forecastWeather);
 
 appContainer.append(forecastContainer);
 
@@ -98,10 +98,10 @@ async function renderFuture(wx) {
 
   forecast.forEach((item) => {
     const forecastCard = document.createElement("div");
-    forecastCard.className = "forecast-card"
+    forecastCard.className = "forecast-card";
 
     const iconContainer = document.createElement("div");
-    iconContainer.className = "icon-div"
+    iconContainer.className = "icon-div";
     const icon = new Image();
     icon.src = `${item.icon}`;
     iconContainer.append(icon);
