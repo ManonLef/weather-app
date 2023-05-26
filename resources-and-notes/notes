@@ -62,6 +62,11 @@
 - Spent a while troubleshooting why every single forecast was seven days of sun. I only rendered the forecast during loading but not after entering a new location (facepalm)
 - I considered adding a function to start the website with a search result for user location. This didn't work well since even my own browser has location services off by system settings. It turned out the API has an ip option that does seem to work nicely.
 
+## 2023-05-26
+- added some styling
+- decided to move on from this project for the objective is complete
+- In the future I'd like to learn a bit more about error handling options, I only added the basics for now
+
 ### Notes:
 - the condition  features icons
 
@@ -74,14 +79,15 @@
 - [x] 2023-05-22 store all the info I actually want to use in one object
 - [x] 2023-05-22 at the end of project please make sure to credit WeatherAPI.com [instructions](https://www.weatherapi.com/docs/#credit)
 - [x] 2023-05-23 consider extracting temp function as helper
-- [ ] 2023-05-24 add error handling
-  - [ ] location unknown
+- [x] 2023-05-24 add error handling
+  - [x] location unknown
 
 ## Future Additions
 - [ ] Hourly forecast for today
 - [ ] My own illustrated backgrounds to change the mood depending on weather
 - [ ] My own icons
 - [ ] SuperMaybe: Add an Aviation Toggle to display TAFs and METARs
+- [ ] More specific error handling
 
 ## Test with:
 - input `av`
