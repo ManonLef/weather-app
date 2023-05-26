@@ -94,7 +94,7 @@ async function renderFuture(wx) {
 
   clearForecast();
 
-  forecastWeatherHeader.textContent = `7 day Forecast for ${current.location}`;
+  forecastWeatherHeader.textContent = `Forecast for ${current.location}`;
 
   forecast.forEach((item) => {
     const forecastCard = document.createElement("div");
