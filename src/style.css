@@ -1,24 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@100;200;300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   height: 100vh;
   display: grid;
-  grid-template-rows: 3rem auto 3rem;
-}
-
-header {
-  background-color: pink;
-  padding: 1rem;
+  grid-template-rows: 4rem auto 4rem;
+  /* background: linear-gradient(
+    90deg,
+    rgba(111, 17, 175, 1) 0%,
+    rgba(255, 95, 127, 1) 50%,
+    rgba(255, 150, 3, 1) 100%
+  ); */
+  background-image:url(../resources-and-notes/neutral-tone-texture-abstract-background.jpg);
+  background-size: cover;
+  background-position: center;
+  font-family: "Anuphan", sans-serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: white;
 }
 
 .app-container {
-  background-color: lightblue;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   padding: 1rem;
+}
+
+.current-container {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 1rem;
+  width:fit-content;
+}
+
+header,
+footer {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #bc3b96;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: center;
+  font-size: 22px;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: auto;
+  gap: 1rem;
+  font-size: 16px;
+}
+
+footer>.credits {
+  font-size: smaller;
+}
+
+a {
+  text-decoration: none;
+}
+
+form {
+  display: flex;
+}
+
+input {
+  appearance: none;
+  border: none;
+  border-radius: 1rem;
+  padding: 5px;
 }
 
 .forecast-container {
@@ -26,17 +82,12 @@ header {
   justify-content: space-between;
 }
 
-footer {
-  background-color: pink;
-  padding: 1rem;
-}
-
 /* turn icons white */
 img {
   filter: brightness(100);
 }
 
-
+/* temperature toggle switch */
 .switch input {
   position: absolute;
   opacity: 0;
@@ -55,18 +106,17 @@ img {
   height: 1em;
   width: 1em;
   border-radius: 1em;
-  background: #FFF;
-  box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
+  background: #fff;
+  box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.3);
   -webkit-transition: all 300ms;
-     -moz-transition: all 300ms;
-          transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
 }
 
 .switch input:checked + .div {
   -webkit-transform: translate3d(100%, 0, 0);
-     -moz-transform: translate3d(100%, 0, 0);
-          transform: translate3d(100%, 0, 0);
-  
+  -moz-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
 }
 
 .div {
@@ -85,3 +135,4 @@ input:checked + .div::before {
   content: "°F";
   font-size: 12px;
 }
+/* end temperature toggle switch */

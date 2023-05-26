@@ -6,6 +6,7 @@ const appHeader = document.querySelector("header");
 
 // current weather display
 const currentWeather = document.createElement("div");
+currentWeather.className = "current-container"
 appContainer.append(currentWeather);
 
 async function renderCurrent(wx) {
