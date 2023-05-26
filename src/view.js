@@ -4,6 +4,17 @@ const appContainer = document.querySelector(".app-container");
 // app Header:
 const appHeader = document.querySelector("header");
 
+// temp toggle
+const switchLabel = document.createElement("label");
+switchLabel.className = "switch";
+const toggle = document.createElement("input");
+toggle.type = "checkbox";
+const div = document.createElement("div");
+div.className = "div";
+switchLabel.append(toggle, div);
+appHeader.append(switchLabel);
+
+
 // current weather display
 const currentWeather = document.createElement("div");
 currentWeather.className = "current-container"
@@ -15,23 +26,23 @@ async function renderCurrent(wx) {
   const current = locationWeather[0];
   //
   clearCurrent();
-  // app header
-  appHeader.textContent = `Manon's WeatherDash`;
   // header
   const currentHeader = document.createElement("div");
+  currentHeader.className = "current-header"
   currentHeader.textContent = `Current Weather in ${current.location}, ${current.country}`;
   // img
   const icon = new Image();
   icon.src = `${current.icon}`;
   //
   const date = document.createElement("div");
+  date.className = "updated"
   date.textContent = `Updated: ${current.day} ${current.date} ${current.last_update_time}`;
   const weather = document.createElement("div");
   weather.textContent = `${current.weather}`;
   const temp = document.createElement("div");
   temp.textContent = `${current.temperature}`;
 
-  const elementsToRender = [currentHeader, icon, weather, temp, date];
+  const elementsToRender = [ icon,currentHeader, weather, temp, date];
   elementsToRender.forEach((element) => currentWeather.append(element));
 }
 
@@ -51,9 +62,9 @@ locationForm.append(inputContainer)
 
 const inputLocation = document.createElement("input");
 inputContainer.appendChild(inputLocation)
+inputLocation.setAttribute("placeholder", "enter a location")
 
 const errorDiv = document.createElement("div");
-errorDiv.textContent = "Search for a location";
 inputContainer.appendChild(errorDiv)
 
 const submitLocation = document.createElement("button");
@@ -64,15 +75,6 @@ function clearInput() {
   inputLocation.value = "";
 }
 
-// temp toggle
-const switchLabel = document.createElement("label");
-switchLabel.className = "switch";
-const toggle = document.createElement("input");
-toggle.type = "checkbox";
-const div = document.createElement("div");
-div.className = "div";
-switchLabel.append(toggle, div);
-formContainer.append(switchLabel);
 
 // forecast weather display
 const forecastContainer = document.createElement("div")
