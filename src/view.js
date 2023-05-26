@@ -2,12 +2,11 @@
 const appContainer = document.querySelector(".app-container");
 
 // app Header:
-const appHeader = document.querySelector("header")
+const appHeader = document.querySelector("header");
 
 // current weather display
 const currentWeather = document.createElement("div");
-const currentWeatherHeader = document.createElement("div");
-appContainer.append(currentWeatherHeader, currentWeather);
+appContainer.append(currentWeather);
 
 async function renderCurrent(wx) {
   // this data still has to go to the api-handler
@@ -16,7 +15,7 @@ async function renderCurrent(wx) {
   //
   clearCurrent();
   // app header
-  appHeader.textContent = `Manon's WeatherDash`
+  appHeader.textContent = `Manon's WeatherDash`;
   // header
   const currentHeader = document.createElement("div");
   currentHeader.textContent = `Current Weather Conditions for ${current.location}`;
@@ -55,19 +54,19 @@ errorDiv.textContent = "Search for a location";
 appContainer.append(errorDiv);
 
 // temp toggle
-const switchLabel = document.createElement("label")
-switchLabel.className = "switch"
+const switchLabel = document.createElement("label");
+switchLabel.className = "switch";
 const toggle = document.createElement("input");
 toggle.type = "checkbox";
-const div = document.createElement("div")
-div.className = "div"
-switchLabel.append(toggle, div)
+const div = document.createElement("div");
+div.className = "div";
+switchLabel.append(toggle, div);
 appContainer.append(switchLabel);
 
 // forecast weather display
 const forecastWeatherHeader = document.createElement("div");
 const forecastWeather = document.createElement("div");
-forecastWeather.className = "forecast-container"
+forecastWeather.className = "forecast-container";
 
 appContainer.append(forecastWeatherHeader, forecastWeather);
 
