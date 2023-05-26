@@ -20,7 +20,7 @@ currentWeather.className = "current-container";
 appContainer.append(currentWeather);
 
 async function renderCurrent(wx) {
-  errorDiv.textContent = ""
+
   // this data still has to go to the api-handler
   const locationWeather = await wx;
   const current = locationWeather[0];
@@ -133,6 +133,7 @@ async function renderFuture(wx) {
 }
 
 function clearCurrent() {
+  errorDiv.textContent = ""
   while (currentWeather.firstChild) {
     currentWeather.removeChild(currentWeather.firstChild);
   }
