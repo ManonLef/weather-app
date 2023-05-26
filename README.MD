@@ -2,6 +2,7 @@
 
 ## Result
 [Live Version](https://manonlef.github.io/weather-app/)
+
 ![Preview of my Procrasti-Not app](./resources-and-notes/weather-app-preview.gif)
 
 ## About this project
