@@ -16,7 +16,7 @@ async function renderCurrent(wx) {
   //
   clearCurrent();
   // app header
-  appHeader.textContent = `The Weather for ${current.location}: It's currently ${current.weather}`
+  appHeader.textContent = `Manon's WeatherDash`
   // header
   const currentHeader = document.createElement("div");
   currentHeader.textContent = `Current Weather Conditions for ${current.location}`;
@@ -55,9 +55,14 @@ errorDiv.textContent = "Search for a location";
 appContainer.append(errorDiv);
 
 // temp toggle
+const switchLabel = document.createElement("label")
+switchLabel.className = "switch"
 const toggle = document.createElement("input");
 toggle.type = "checkbox";
-appContainer.append(toggle);
+const div = document.createElement("div")
+div.className = "div"
+switchLabel.append(toggle, div)
+appContainer.append(switchLabel);
 
 // forecast weather display
 const forecastWeatherHeader = document.createElement("div");
