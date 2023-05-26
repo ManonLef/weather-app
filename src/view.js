@@ -19,13 +19,11 @@ async function renderCurrent(wx) {
   appHeader.textContent = `Manon's WeatherDash`;
   // header
   const currentHeader = document.createElement("div");
-  currentHeader.textContent = `Current Weather Conditions for ${current.location}`;
+  currentHeader.textContent = `Current Weather in ${current.location}, ${current.country}`;
   // img
   const icon = new Image();
   icon.src = `${current.icon}`;
   //
-  const location = document.createElement("div");
-  location.textContent = `${current.location}, ${current.country}`;
   const date = document.createElement("div");
   date.textContent = `Updated: ${current.day} ${current.date} ${current.last_update_time}`;
   const weather = document.createElement("div");
@@ -33,13 +31,18 @@ async function renderCurrent(wx) {
   const temp = document.createElement("div");
   temp.textContent = `${current.temperature}`;
 
-  const elementsToRender = [currentHeader, icon, location, weather, temp, date];
+  const elementsToRender = [currentHeader, icon, weather, temp, date];
   elementsToRender.forEach((element) => currentWeather.append(element));
 }
 
 // create form
+
+const formContainer = document.createElement("div")
+formContainer.className = "form-container"
+appContainer.append(formContainer)
+
 const locationForm = document.createElement("form");
-appContainer.appendChild(locationForm);
+formContainer.appendChild(locationForm);
 
 const inputContainer = document.createElement("div")
 inputContainer.className = "input-container"
@@ -69,14 +72,18 @@ toggle.type = "checkbox";
 const div = document.createElement("div");
 div.className = "div";
 switchLabel.append(toggle, div);
-appContainer.append(switchLabel);
+formContainer.append(switchLabel);
 
 // forecast weather display
+const forecastContainer = document.createElement("div")
+forecastContainer.className = "forecast-container"
 const forecastWeatherHeader = document.createElement("div");
+forecastWeatherHeader.className = "forecast-header"
 const forecastWeather = document.createElement("div");
-forecastWeather.className = "forecast-container";
+forecastWeather.className = "forecast-days";
+forecastContainer.append(forecastWeatherHeader, forecastWeather)
 
-appContainer.append(forecastWeatherHeader, forecastWeather);
+appContainer.append(forecastContainer);
 
 async function renderFuture(wx) {
   const locationWeather = await wx;
@@ -89,8 +96,10 @@ async function renderFuture(wx) {
 
   forecast.forEach((item) => {
     const forecastCard = document.createElement("div");
+    forecastCard.className = "forecast-card"
 
     const iconContainer = document.createElement("div");
+    iconContainer.className = "icon-div"
     const icon = new Image();
     icon.src = `${item.icon}`;
     iconContainer.append(icon);
