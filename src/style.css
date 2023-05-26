@@ -16,8 +16,8 @@ body {
   background: linear-gradient(to right, #826afb, #ff5e9e, #ff9f4b);
 
   background-size: 400% 400%;
-  -webkit-animation: gradient 15s ease infinite;
-  animation: gradient 15s ease infinite;
+  -webkit-animation: gradient 30s ease infinite;
+  animation: gradient 30s ease infinite;
   overflow-x: hidden;
 
   font-family: "Anuphan", sans-serif;
@@ -138,6 +138,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 0.5rem;
   padding: 1.5rem;
 }
@@ -252,8 +253,8 @@ input:checked + .div::before {
 
 /* gradient animation */
 body:hover {
-  -webkit-animation: gradient 15s ease infinite;
-  animation: gradient 15s ease infinite;
+  -webkit-animation: gradient 30s ease infinite;
+  animation: gradient 30s ease infinite;
 }
 
 @-webkit-keyframes gradient {
