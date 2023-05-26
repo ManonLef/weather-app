@@ -40,18 +40,25 @@ async function renderCurrent(wx) {
 const locationForm = document.createElement("form");
 appContainer.appendChild(locationForm);
 
-const inputLocation = document.createElement("input");
-const submitLocation = document.createElement("button");
-submitLocation.textContent = "submit";
-locationForm.append(inputLocation, submitLocation);
+const inputContainer = document.createElement("div")
+inputContainer.className = "input-container"
 
-async function clearInput() {
-  inputLocation.value = "";
-}
+locationForm.append(inputContainer)
+
+const inputLocation = document.createElement("input");
+inputContainer.appendChild(inputLocation)
 
 const errorDiv = document.createElement("div");
 errorDiv.textContent = "Search for a location";
-appContainer.append(errorDiv);
+inputContainer.appendChild(errorDiv)
+
+const submitLocation = document.createElement("button");
+submitLocation.textContent = "submit";
+locationForm.append(submitLocation);
+
+function clearInput() {
+  inputLocation.value = "";
+}
 
 // temp toggle
 const switchLabel = document.createElement("label");
