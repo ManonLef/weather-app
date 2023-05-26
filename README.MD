@@ -1,4 +1,4 @@
-# To-Do App Procrasti-Not
+# Weather App
 
 ## Result
 [Live Version](https://manonlef.github.io/weather-app/)
