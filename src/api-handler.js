@@ -12,34 +12,34 @@ async function getWeatherData(loc) {
 }
 
 // filter data used for current weather
-async function getCurrentWeather(loc) {
-  const data = await getWeatherData(loc);
+function getCurrentWeather(weatherData) {
   const currentData = {
-    icon: data.current.condition.icon,
-    last_update: data.current.last_updated,
-    last_update_time: getLocalTime(createDate(data.current.last_updated)),
-    day: getWeekDay(createDate(data.current.last_updated)),
-    date: getLocalDate(data.current.last_updated),
-    location: data.location.name,
-    country: data.location.country,
-    weather: data.current.condition.text,
+    icon: weatherData.current.condition.icon,
+    last_update: weatherData.current.last_updated,
+    last_update_time: getLocalTime(
+      createDate(weatherData.current.last_updated)
+    ),
+    day: getWeekDay(createDate(weatherData.current.last_updated)),
+    date: getLocalDate(weatherData.current.last_updated),
+    location: weatherData.location.name,
+    country: weatherData.location.country,
+    weather: weatherData.current.condition.text,
     temperature: (function temperature() {
       if (tempUnit === "c") {
-        return `${data.current.temp_c}°C`;
+        return `${weatherData.current.temp_c}°C`;
       }
-      return `${data.current.temp_f}°F`;
+      return `${weatherData.current.temp_f}°F`;
     })(),
   };
   return currentData;
 }
 
 // filter data used for forecast
-async function getFutureWeather(loc) {
-  const data = await getWeatherData(loc);
+function getFutureWeather(weatherData) {
   const forecastWeek = [];
-  data.forecast.forecastday.forEach((futureDate) => {
+  weatherData.forecast.forecastday.forEach((futureDate) => {
     const forecastDay = {
-      location: `${data.location.name}`,
+      location: `${weatherData.location.name}`,
       icon: futureDate.day.condition.icon,
       day: getWeekDay(createDate(futureDate.date)),
       date: getLocalDate(futureDate.date),
@@ -64,10 +64,8 @@ async function getFutureWeather(loc) {
 
 // combined functions to get all weather to be stored in an array
 async function getAllWeather() {
-  const weather = [
-    await getCurrentWeather(location),
-    await getFutureWeather(location),
-  ];
+  const data = await getWeatherData(location);
+  const weather = [getCurrentWeather(data), getFutureWeather(data)];
   return weather;
 }
 
