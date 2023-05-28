@@ -1,38 +1,17 @@
 /* eslint no-use-before-define: ["error", { "functions": false }] */
 let tempUnit = "c";
 let location = "auto:ip";
-let previousLocation = "auto:ip"
+let previousLocation = "auto:ip";
 
-function setLocation(loc) {
-  location = loc;
-  return location;
-}
-
-function getLocation() {
-  return location
-}
-
-function setPreviousLocation() {
-  previousLocation = getLocation()
-  return previousLocation
-}
-
-function getPreviousLocation() {
-  return previousLocation
-}
-
-function setTempUnit(unit) {
-  tempUnit = unit;
-  return tempUnit;
-}
-
+// API weather call
 async function getWeatherData(loc) {
-    const locationLink = `https://api.weatherapi.com/v1/forecast.json?key=51ca3ed754014c58aad194423231805&q=${loc}&days=7&aqi=no&alerts=no`;
-    const response = await fetch(locationLink, { mode: "cors" });
-    const weatherData = await response.json();
-    return weatherData;
+  const locationLink = `https://api.weatherapi.com/v1/forecast.json?key=51ca3ed754014c58aad194423231805&q=${loc}&days=7&aqi=no&alerts=no`;
+  const response = await fetch(locationLink, { mode: "cors" });
+  const weatherData = await response.json();
+  return weatherData;
 }
 
+// filter data used for current weather
 async function getCurrentWeather(loc) {
   const data = await getWeatherData(loc);
   const currentData = {
@@ -54,6 +33,7 @@ async function getCurrentWeather(loc) {
   return currentData;
 }
 
+// filter data used for forecast
 async function getFutureWeather(loc) {
   const data = await getWeatherData(loc);
   const forecastWeek = [];
@@ -82,6 +62,15 @@ async function getFutureWeather(loc) {
   return forecastWeek;
 }
 
+// combined functions to get all weather to be stored in an array
+async function getAllWeather() {
+  const weather = [
+    await getCurrentWeather(location),
+    await getFutureWeather(location),
+  ];
+  return weather;
+}
+
 // date helpers
 function getWeekDay(date) {
   const weekDay = date.toLocaleString("en-us", {
@@ -91,10 +80,11 @@ function getWeekDay(date) {
 }
 
 function getLocalTime(date) {
-  const time = date.toLocaleTimeString([], { 
-    hour: "2-digit", minute: "2-digit" 
+  const time = date.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
   });
-  return     time
+  return time;
 }
 
 function createDate(date) {
@@ -112,14 +102,35 @@ function getLocalDate(date) {
   return localDate;
 }
 
-// combined functions to get all weather to be displayed
-async function getAllWeather() {
-  const weather = [
-    await getCurrentWeather(location),
-    await getFutureWeather(location),
-  ];
-  // console helpers
-  return weather;
+// getters and setters
+function setLocation(loc) {
+  location = loc;
+  return location;
 }
 
-export { getAllWeather, setTempUnit, setLocation, getPreviousLocation, setPreviousLocation, getLocation };
+function getLocation() {
+  return location;
+}
+
+function setPreviousLocation() {
+  previousLocation = getLocation();
+  return previousLocation;
+}
+
+function getPreviousLocation() {
+  return previousLocation;
+}
+
+function setTempUnit(unit) {
+  tempUnit = unit;
+  return tempUnit;
+}
+
+export {
+  getAllWeather,
+  setTempUnit,
+  setLocation,
+  getPreviousLocation,
+  setPreviousLocation,
+  getLocation,
+};
