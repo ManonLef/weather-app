@@ -1,26 +1,13 @@
 /* eslint no-use-before-define: ["error", { "functions": false }] */
-const appContainer = document.querySelector(".app-container");
 
 // app Header:
-const appHeader = document.querySelector("header");
-
-// temp toggle
-const switchLabel = document.createElement("label");
-switchLabel.className = "switch";
-const toggle = document.createElement("input");
-toggle.type = "checkbox";
-const div = document.createElement("div");
-div.className = "div";
-switchLabel.append(toggle, div);
-appHeader.append(switchLabel);
-
-// current weather display
-const currentWeather = document.createElement("div");
-currentWeather.className = "current-container";
-appContainer.append(currentWeather);
+const toggle = document.querySelector("#temp-toggle");
+const currentWeather = document.querySelector(".current-container")
+const inputLocation = document.querySelector("#location-input");
+const submitLocation = document.querySelector("button");
+const errorDiv = document.querySelector(".error");
 
 async function renderCurrent(wx) {
-
   // this data still has to go to the api-handler
   const locationWeather = await wx;
   const current = locationWeather[0];
@@ -46,46 +33,14 @@ async function renderCurrent(wx) {
   elementsToRender.forEach((element) => currentWeather.append(element));
 }
 
-// create form
-
-const formContainer = document.createElement("div");
-formContainer.className = "form-container";
-appContainer.append(formContainer);
-
-const locationForm = document.createElement("form");
-formContainer.appendChild(locationForm);
-
-const inputContainer = document.createElement("div");
-inputContainer.className = "input-container";
-
-locationForm.append(inputContainer);
-
-const inputLocation = document.createElement("input");
-inputContainer.appendChild(inputLocation);
-inputLocation.setAttribute("placeholder", "enter a location");
-
-const errorDiv = document.createElement("div");
-errorDiv.className = "error"
-inputContainer.appendChild(errorDiv);
-
-const submitLocation = document.createElement("button");
-submitLocation.textContent = "submit";
-locationForm.append(submitLocation);
-
-function clearInput() {
-  inputLocation.value = "";
-}
-
 // forecast weather display
-const forecastContainer = document.createElement("div");
-forecastContainer.className = "forecast-container";
+const forecastContainer = document.querySelector(".forecast-container");
 const forecastWeatherHeader = document.createElement("div");
 forecastWeatherHeader.className = "forecast-header";
 const forecastWeather = document.createElement("div");
 forecastWeather.className = "forecast-days";
 forecastContainer.append(forecastWeatherHeader, forecastWeather);
 
-appContainer.append(forecastContainer);
 
 async function renderFuture(wx) {
   const locationWeather = await wx;
@@ -130,6 +85,10 @@ async function renderFuture(wx) {
 
     forecastWeather.appendChild(forecastCard);
   });
+}
+
+function clearInput() {
+  inputLocation.value = "";
 }
 
 function clearCurrent() {

@@ -8,8 +8,23 @@
     <title>Manon's Weather App</title>
   </head>
   <body>
-    <header><div class="title">Weather Dash</div></header>
-    <div class="app-container"></div>
+    <header><div class="title">Weather Dash</div>
+    <label for="temp-toggle" class="switch"><input type="checkbox" id="temp-toggle"><div class="div"></div></label></header>
+    <div class="app-container">
+      <div class="current-container"></div>
+      <div class="form-container">
+        <form action>
+          <div class="input-container">
+            <label for="location-input">
+              <input type="text" id="location-input" placeholder="enter a location">
+              <div class="error"></div>
+            </label>
+          </div>
+          <button>submit</button>
+        </form>
+      </div>
+      <div class="forecast-container"></div>
+    </div>
     <footer>
       <div>© 2023 Manon Lef</div>
       <div class="credits">
