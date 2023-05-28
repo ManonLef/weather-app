@@ -67,6 +67,9 @@
 - decided to move on from this project for the objective is complete
 - In the future I'd like to learn a bit more about error handling options, I only added the basics for now
 
+## 2023-05-28
+- had some time to clean up the code, noticed an error I'd want to catch with the temperature not toggling after location unfound
+
 ### Notes:
 - the condition  features icons
 
@@ -81,6 +84,7 @@
 - [x] 2023-05-23 consider extracting temp function as helper
 - [x] 2023-05-24 add error handling
   - [x] location unknown
+- [x] 2023-05-28 fix toggle bug on location error
 
 ## Future Additions
 - [ ] Hourly forecast for today
