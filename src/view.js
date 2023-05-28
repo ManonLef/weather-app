@@ -19,7 +19,7 @@ async function renderCurrent(wx) {
 
   const currentHeader = document.createElement("div");
   currentHeader.className = "current-header";
-  currentHeader.textContent = `Current Weather in ${current.location}, ${current.country}`;
+  currentHeader.textContent = `Current Weather for ${current.location}, ${current.country}`;
 
   const icon = new Image();
   icon.src = `${current.icon}`;
