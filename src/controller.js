@@ -1,39 +1,42 @@
 /* eslint no-use-before-define: ["error", { "functions": false }] */
-import { inputLocation, submitLocation, clearInput, toggle, renderCurrent, renderFuture } from "./view";
-import { getAllWeather, setTempUnit, setLocation } from "./api-handler";
+import {
+  inputLocation,
+  submitLocation,
+  clearInput,
+  toggle,
+  renderCurrent,
+  renderFuture,
+} from "./view";
+import { getAllWeather, setTempUnit, setLocation, getPreviousLocation, setPreviousLocation, getLocation } from "./api-handler";
 
-document.addEventListener("DOMContentLoaded", () => {
-  submitLocation.addEventListener("click", renderLocationWeather);
-  toggle.addEventListener("change", toggleTemp);
-});
+// event listeners for toggle and location
+submitLocation.addEventListener("click", renderLocationWeather);
+toggle.addEventListener("change", toggleTemp);
 
-async function renderLocationWeather(event) {
+function renderLocationWeather(event) {
   event.preventDefault();
+  setPreviousLocation(getLocation())
   setLocation(inputLocation.value);
-  await renderAll();
+  renderAll();
   clearInput();
 }
 
 function toggleTemp() {
   if (toggle.checked) {
     setTempUnit("f");
-    return renderAll()
+    return renderAll();
   }
-   setTempUnit("c")
-   return renderAll()
+  setTempUnit("c");
+  return renderAll();
 }
 
-async function renderAll() {
-try {await renderCurrent(getAllWeather())
-await renderFuture(getAllWeather())}
-catch(error) {
-  document.querySelector(".error").textContent = "location not found"
+export default async function renderAll() {
+  try {
+    await renderCurrent(getAllWeather());
+    await renderFuture(getAllWeather());
+  } catch (error) {
+    setLocation(getPreviousLocation());
+    await renderAll()
+    document.querySelector(".error").textContent = "location not found";
+  }
 }
-}
-
-renderAll()
-
-
-
-
-

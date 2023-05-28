@@ -1,10 +1,24 @@
 /* eslint no-use-before-define: ["error", { "functions": false }] */
 let tempUnit = "c";
 let location = "auto:ip";
+let previousLocation = "auto:ip"
 
 function setLocation(loc) {
   location = loc;
   return location;
+}
+
+function getLocation() {
+  return location
+}
+
+function setPreviousLocation() {
+  previousLocation = getLocation()
+  return previousLocation
+}
+
+function getPreviousLocation() {
+  return previousLocation
 }
 
 function setTempUnit(unit) {
@@ -21,7 +35,6 @@ async function getWeatherData(loc) {
 
 async function getCurrentWeather(loc) {
   const data = await getWeatherData(loc);
-  console.log(data)
   const currentData = {
     icon: data.current.condition.icon,
     last_update: data.current.last_updated,
@@ -109,4 +122,4 @@ async function getAllWeather() {
   return weather;
 }
 
-export { getAllWeather, setTempUnit, setLocation };
+export { getAllWeather, setTempUnit, setLocation, getPreviousLocation, setPreviousLocation, getLocation };
