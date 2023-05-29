@@ -23,6 +23,7 @@ There was a lot of data to play with. Reaching the world of API's I found my cre
 - This project was a delight to work on. Opening up the world of API's and all the data it can provide really feels like a big step was made. 
 
 ## Features or things I'd love to work on for this project in the future
+- [ ] Loading screen for slower connections
 - [ ] Hourly forecast for today
 - [ ] My own illustrated backgrounds to change the mood depending on weather
 - [ ] My own icons
